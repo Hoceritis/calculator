@@ -74,7 +74,7 @@ clear.textContent = 'Clear';
 equal.textContent = '=';
 
 
-mainBody.append(one,two,three,four,five,six,seven,eight,nine,zero,addButton,subtractButton,divideButton,multiplyButton,clear,equal)
+mainBody.append(one,two,three,addButton,four,five,six,subtractButton,seven,eight,nine,divideButton,equal,clear,zero,equal,multiplyButton)
 
 let number1;
 let number2;
