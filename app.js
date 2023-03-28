@@ -8,7 +8,20 @@ title.setAttribute('id','title')
 
 mainDiv.appendChild(title)
 
-title.textContent =" JS calculator "
+title.textContent ="JS calculator"
+
+let calculator = document.createElement('div')
+calculator.setAttribute('id','calculator')
+mainDiv.appendChild(calculator)
+
+let display = document.createElement('div')
+display.setAttribute('id','display')
+
+let mainBodyCalculator = document.createElement('div')
+mainBodyCalculator.setAttribute('id','mainBody')
+
+calculator.append(display, mainBodyCalculator)
+
 
 let number1;
 let number2;
