@@ -112,3 +112,11 @@ function add (number1, number2){
     } else return number1 * number2
   }
 
+let buttons = document.querySelectorAll('.button')
+
+buttons.forEach(function(item){
+    item.addEventListener('click', e => {
+        console.log(e.target.textContent)
+    })
+})
+
