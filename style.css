@@ -20,9 +20,12 @@
     width: 518px;
     background-color: #a3b1bc;
     display: flex;
+    justify-content: flex-end;
 }
 
 #displayContent{
+    display: flex;
     align-items: flex-end;
-    justify-content: flex-end;
+    font-size: 40px;
 }
+
