@@ -125,7 +125,6 @@ buttons.forEach(function(item){
         let clickedElement = e.target.textContent
         displayContentValue.push(clickedElement)
         //console.log(displayContentValue)
-        displayContent.textContent = displayContentValue
+        displayContent.textContent = displayContentValue.join("")
     })
 })
-
