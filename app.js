@@ -56,16 +56,16 @@ multiplyButton.setAttribute('class','button')
 clear.setAttribute('class','button')
 equal.setAttribute('class','button')
 
-one.textContent = '1';
-two.textContent = '2';
-three.textContent = '3';
-four.textContent = '4';
-five.textContent = '5';
-six.textContent = '6';
-seven.textContent = '7';
-eight.textContent = '8';
-nine.textContent = '9';
-zero.textContent = '0';
+one.textContent = 1;
+two.textContent = 2;
+three.textContent = 3;
+four.textContent = 4;
+five.textContent = 5;
+six.textContent = 6;
+seven.textContent = 7;
+eight.textContent = 8;
+nine.textContent = 9;
+zero.textContent = 0;
 addButton.textContent = '+';
 subtractButton.textContent = '-';
 divideButton.textContent = '/';
@@ -110,12 +110,12 @@ function add (number1, number2){
 
   function operate (number1, operator, number2){
     if(operator === '+'){
-        return number1 + number2
+        return add(number1,number2)
     } else if(operator === '-'){
-        return number1 - number2
+        return subtract(number1, number2)
     } else if (operator === '/'){
-        return number1 / number2
-    } else return number1 * number2
+        return divide(number1, number2)
+    } else return multiply(number1, number2)
   }
 
 let buttons = document.querySelectorAll('.button')
@@ -124,7 +124,12 @@ buttons.forEach(function(item){
     item.addEventListener('click', e => {
         let clickedElement = e.target.textContent
         displayContentValue.push(clickedElement)
-        //console.log(displayContentValue)
-        displayContent.textContent = displayContentValue.join("")
+        displayContent.textContent = displayContentValue.join("");
+        if (clickedElement == '='){
+            operate(clickedElement[0],clickedElement[1],clickedElement[2])
+            console.log(clickedElement[0], clickedElement[1], clickedElement[2])
+            console.log(operate(clickedElement[0],clickedElement[1],clickedElement[2]))
+            //console.log(displayContent.textContent)
+        }
     })
 })
