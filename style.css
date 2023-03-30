@@ -11,4 +11,11 @@
     grid-template-columns: auto auto auto auto;
     background-color: #a3b1bc;
     padding: 10px;
+    width: 500px;
+}
+
+#display{
+    height: 90px;
+    border: 2px solid black;
+    width: 516px;
 }

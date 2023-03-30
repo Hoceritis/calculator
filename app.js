@@ -70,7 +70,7 @@ addButton.textContent = '+';
 subtractButton.textContent = '-';
 divideButton.textContent = '/';
 multiplyButton.textContent = '*'
-clear.textContent = 'Clear';
+clear.textContent = 'C';
 equal.textContent = '=';
 
 
