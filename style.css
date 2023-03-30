@@ -14,9 +14,15 @@
     width: 500px;
 }
 
-#display{
+#displayCalculator{
     height: 90px;
     border: 1px solid black;
     width: 518px;
     background-color: #a3b1bc;
+    display: flex;
+}
+
+#displayContent{
+    align-items: flex-end;
+    justify-content: flex-end;
 }

@@ -14,13 +14,13 @@ let calculator = document.createElement('div')
 calculator.setAttribute('id','calculator')
 mainDiv.appendChild(calculator)
 
-let display = document.createElement('div')
-display.setAttribute('id','display')
+let displayCalculator = document.createElement('div')
+displayCalculator.setAttribute('id','displayCalculator')
 
 let mainBodyCalculator = document.createElement('div')
 mainBodyCalculator.setAttribute('id','mainBody')
 
-calculator.append(display, mainBodyCalculator)
+calculator.append(displayCalculator, mainBodyCalculator)
 
 let one = document.createElement('div')
 let two = document.createElement('div')
@@ -80,6 +80,12 @@ let number1;
 let number2;
 let operator;
 
+let displayContent = document.createElement('div')
+displayContent.setAttribute('id','displayContent')
+
+displayCalculator.append(displayContent)
+
+let displayContentValue = []
 
 function add (number1, number2){
     let result = number1 + number2;
@@ -116,7 +122,10 @@ let buttons = document.querySelectorAll('.button')
 
 buttons.forEach(function(item){
     item.addEventListener('click', e => {
-        console.log(e.target.textContent)
+        let clickedElement = e.target.textContent
+        displayContentValue.push(clickedElement)
+        //console.log(displayContentValue)
+        displayContent.textContent = displayContentValue
     })
 })
 
