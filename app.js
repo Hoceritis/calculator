@@ -110,7 +110,11 @@ function add (number1, number2){
 
   function operate (number1, operator, number2){
     if(operator === '+'){
-        return add(number1,number2)
+        if(typeof(number1) === NaN || typeof(number2) === NaN)
+        {
+          number(number1, number2)
+        }
+        return add(number1, number2)
     } else if(operator === '-'){
         return subtract(number1, number2)
     } else if (operator === '/'){
@@ -124,12 +128,17 @@ buttons.forEach(function(item){
     item.addEventListener('click', e => {
         let clickedElement = e.target.textContent
         displayContentValue.push(clickedElement)
-        displayContent.textContent = displayContentValue.join("");
+        console.log(displayContentValue)
+        //displayContent.textContent = displayContentValue.join("");
+        //console.log(displayContent.textContent)
         if (clickedElement == '='){
-            operate(clickedElement[0],clickedElement[1],clickedElement[2])
-            console.log(clickedElement[0], clickedElement[1], clickedElement[2])
-            console.log(operate(clickedElement[0],clickedElement[1],clickedElement[2]))
-            //console.log(displayContent.textContent)
+            let result = operate(displayContentValue[0],displayContentValue[1],displayContentValue[2])
+            console.log(typeof(displayContentValue[0]))
+            console.log(typeof(displayContentValue[1]))
+            console.log(typeof(displayContentValue[2]))
+            displayContent.textContent = result
+            displayContentValue.splice(0,displayContentValue.length)
+            console.log(result)
         }
     })
 })
