@@ -109,11 +109,11 @@ function add (number1, number2){
 
 
   function operate (number1, operator, number2){
+
+    number1 = parseInt(number1)
+    number2 = parseInt(number2)
+
     if(operator === '+'){
-        if(typeof(number1) === NaN || typeof(number2) === NaN)
-        {
-          number(number1, number2)
-        }
         return add(number1, number2)
     } else if(operator === '-'){
         return subtract(number1, number2)
@@ -129,13 +129,11 @@ buttons.forEach(function(item){
         let clickedElement = e.target.textContent
         displayContentValue.push(clickedElement)
         console.log(displayContentValue)
-        //displayContent.textContent = displayContentValue.join("");
-        //console.log(displayContent.textContent)
+
         if (clickedElement == '='){
+          
             let result = operate(displayContentValue[0],displayContentValue[1],displayContentValue[2])
-            console.log(typeof(displayContentValue[0]))
-            console.log(typeof(displayContentValue[1]))
-            console.log(typeof(displayContentValue[2]))
+
             displayContent.textContent = result
             displayContentValue.splice(0,displayContentValue.length)
             console.log(result)
