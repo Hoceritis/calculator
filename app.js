@@ -135,27 +135,23 @@ buttons.forEach(function(item){
             number1 = parseFloat(displayContentValue)
             operator = clickedElement
             displayContentValue = "";
-            console.log(number1)
+            console.log('this is number1 :', number1)
             console.log(operator)
           }
 
-
-        /* if (!isNaN(parseFloat(clickedElement))) {
+        if (number1 !== '' && !isNaN(parseFloat(clickedElement))) {
           number2 += clickedElement; // Append clickedElement to number2
-          //console.log('this is number2: ', number2);
+          console.log('this is number2 :', number2)
         }
 
-        if (clickedElement === '=') {
-          let result = operate(number1, operator, number2); // Pass number1 and number2 to operate function
-    
-          displayContent.textContent = result;
-          displayContentValue = ""; // Reset displayContentValue
-          number1 = ""; // Reset number1
-          number2 = ""; // Reset number2
-    
-          console.log(result);
-        } */
-    })
+        if(clickedElement === '=' && number1 !== '' && number2 !== ''){
+            let result;
+            result = operate(number1, operator, number2)
+            displayContent.textContent = result
+            console.log(result)
+        }
+
+      })
 })
 
 // idea for storing the values
