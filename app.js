@@ -76,16 +76,16 @@ equal.textContent = '=';
 
 mainBody.append(one,two,three,addButton,four,five,six,subtractButton,seven,eight,nine,divideButton,equal,clear,zero,equal,multiplyButton)
 
-let number1;
-let number2;
-let operator;
 
 let displayContent = document.createElement('div')
 displayContent.setAttribute('id','displayContent')
 
 displayCalculator.append(displayContent)
 
-let displayContentValue = []
+let number1 = '';
+let number2 = '';
+let operator = '';
+let displayContentValue = "";
 
 function add (number1, number2){
     let result = number1 + number2;
@@ -127,16 +127,38 @@ let buttons = document.querySelectorAll('.button')
 buttons.forEach(function(item){
     item.addEventListener('click', e => {
         let clickedElement = e.target.textContent
-        displayContentValue.push(clickedElement)
-        console.log(displayContentValue)
+        displayContentValue += clickedElement;
+        displayContent.textContent = displayContentValue;
 
-        if (clickedElement == '='){
-          
-            let result = operate(displayContentValue[0],displayContentValue[1],displayContentValue[2])
+        if (clickedElement === '+'|| clickedElement === '-' || clickedElement === '*' || clickedElement === '/')
+          {
+            number1 = parseFloat(displayContentValue)
+            operator = clickedElement
+            displayContentValue = "";
+            console.log(number1)
+            console.log(operator)
+          }
 
-            displayContent.textContent = result
-            displayContentValue.splice(0,displayContentValue.length)
-            console.log(result)
+
+        /* if (!isNaN(parseFloat(clickedElement))) {
+          number2 += clickedElement; // Append clickedElement to number2
+          //console.log('this is number2: ', number2);
         }
+
+        if (clickedElement === '=') {
+          let result = operate(number1, operator, number2); // Pass number1 and number2 to operate function
+    
+          displayContent.textContent = result;
+          displayContentValue = ""; // Reset displayContentValue
+          number1 = ""; // Reset number1
+          number2 = ""; // Reset number2
+    
+          console.log(result);
+        } */
     })
 })
+
+// idea for storing the values
+// first variable store the first number (when a click on operator is registered you stop)
+// second variable take the operator
+// third variable is being populated when the operator variable return 'true'
