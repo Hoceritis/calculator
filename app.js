@@ -38,6 +38,7 @@ let divideButton = document.createElement('div')
 let multiplyButton = document.createElement('div')
 let clear = document.createElement('div')
 let equal = document.createElement('div')
+let period = document.createElement('div')
 
 one.setAttribute('class','button')
 two.setAttribute('class','button')
@@ -55,6 +56,7 @@ divideButton.setAttribute('class','button')
 multiplyButton.setAttribute('class','button')
 clear.setAttribute('class','button')
 equal.setAttribute('class','button')
+period.setAttribute('class','button')
 
 one.textContent = 1;
 two.textContent = 2;
@@ -72,9 +74,10 @@ divideButton.textContent = '/';
 multiplyButton.textContent = '*'
 clear.textContent = 'C';
 equal.textContent = '=';
+period.textContent ='.';
 
 
-mainBody.append(one,two,three,addButton,four,five,six,subtractButton,seven,eight,nine,divideButton,equal,clear,zero,equal,multiplyButton)
+mainBody.append(one,two,three,addButton,four,five,six,subtractButton,seven,eight,nine,divideButton,equal,clear,period,zero,multiplyButton,equal)
 
 
 let displayContent = document.createElement('div')
@@ -132,7 +135,7 @@ buttons.forEach(function(item){
         erase(clickedElement);
         displayContent.textContent = displayContentValue;
        
-        
+
         if (clickedElement === '+'|| clickedElement === '-' || clickedElement === '*' || clickedElement === '/')
           {
             number1 = parseFloat(displayContentValue)
@@ -161,7 +164,7 @@ buttons.forEach(function(item){
     if(clickedElement ==='C'){
       number1 =''
       number2 =''
-      displayContentValue = 'Erased !'
+      displayContentValue = ''
     }
   }
 
