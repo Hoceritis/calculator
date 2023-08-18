@@ -126,10 +126,13 @@ let buttons = document.querySelectorAll('.button')
 
 buttons.forEach(function(item){
     item.addEventListener('click', e => {
+        
         let clickedElement = e.target.textContent
         displayContentValue += clickedElement;
+        erase(clickedElement);
         displayContent.textContent = displayContentValue;
-
+       
+        
         if (clickedElement === '+'|| clickedElement === '-' || clickedElement === '*' || clickedElement === '/')
           {
             number1 = parseFloat(displayContentValue)
@@ -140,7 +143,7 @@ buttons.forEach(function(item){
           }
 
         if (number1 !== '' && !isNaN(parseFloat(clickedElement))) {
-          number2 += clickedElement; // Append clickedElement to number2
+          number2 += clickedElement;
           console.log('this is number2 :', number2)
         }
 
@@ -153,6 +156,14 @@ buttons.forEach(function(item){
 
       })
 })
+
+  function erase (clickedElement){
+    if(clickedElement ==='C'){
+      number1 =''
+      number2 =''
+      displayContentValue = 'Erased !'
+    }
+  }
 
 // idea for storing the values
 // first variable store the first number (when a click on operator is registered you stop)
