@@ -80,15 +80,17 @@ period.textContent ='.';
 mainBody.append(one,two,three,addButton,four,five,six,subtractButton,seven,eight,nine,divideButton,equal,clear,period,zero,multiplyButton,equal)
 
 
-let displayContent = document.createElement('div')
-displayContent.setAttribute('id','displayContent')
-
-displayCalculator.append(displayContent)
+let display = document.createElement('div')
+display.setAttribute('id','display')
+displayCalculator.append(display)
 
 let number1 = '';
 let number2 = '';
 let operator = '';
-let displayContentValue = "";
+let displayContent = "";
+
+
+// functions to do base calculation
 
 function add (number1, number2){
     let result = number1 + number2;
@@ -110,6 +112,7 @@ function add (number1, number2){
       return result
   } 
 
+// function operate that adds number to calculus
 
   function operate (number1, operator, number2){
 
@@ -125,22 +128,26 @@ function add (number1, number2){
     } else return multiply(number1, number2)
   }
 
+// Core function/iteration (?) that registers the hit on the calculator + process the logic above
+
 let buttons = document.querySelectorAll('.button')
 
 buttons.forEach(function(item){
     item.addEventListener('click', e => {
         
         let clickedElement = e.target.textContent
-        displayContentValue += clickedElement;
+        displayContent += clickedElement;
+        console.log("this is the calculator display :" + displayContent)
         erase(clickedElement);
-        displayContent.textContent = displayContentValue;
+        display.textContent = displayContent;
+        
        
 
         if (clickedElement === '+'|| clickedElement === '-' || clickedElement === '*' || clickedElement === '/')
           {
-            number1 = parseFloat(displayContentValue)
+            number1 = parseFloat(displayContent)
             operator = clickedElement
-            displayContentValue = "";
+            displayContent = "";
             console.log('this is number1 :', number1)
             console.log(operator)
           }
@@ -154,7 +161,9 @@ buttons.forEach(function(item){
             let result;
             result = operate(number1, operator, number2)
             displayContent.textContent = result
-            console.log(result)
+            console.log("this is displaycontent.textcontent: " + displayContent.textContent)
+            console.log("this is result: " + result)
+            //displayContentValue =''
         }
 
       })
@@ -164,9 +173,11 @@ buttons.forEach(function(item){
     if(clickedElement ==='C'){
       number1 =''
       number2 =''
-      displayContentValue = ''
+      displayContent = ''
     }
   }
+
+
 
 // idea for storing the values
 // first variable store the first number (when a click on operator is registered you stop)
