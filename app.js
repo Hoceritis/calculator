@@ -128,6 +128,22 @@ function add (number1, number2){
     } else return multiply(number1, number2)
   }
 
+// function to erase and reset calculus at the end of operations
+
+  function erase (clickedElement){
+    if(clickedElement ==='C'){
+      number1 =''
+      number2 =''
+      displayContent = ''
+    }
+  }
+
+  function reset() {
+    number1 ='';
+    number2 ='';
+    operator =''
+  }
+
 // Core function/iteration (?) that registers the hit on the calculator + process the logic above
 
 let buttons = document.querySelectorAll('.button')
@@ -162,20 +178,11 @@ buttons.forEach(function(item){
             display.textContent = result
             console.log("this is display.textContent: " + display.textContent)
             console.log("this is result: " + result)
-            //displayContentValue =''
+            reset();
         }
 
       })
 })
 
-  function erase (clickedElement){
-    if(clickedElement ==='C'){
-      number1 =''
-      number2 =''
-      displayContent = ''
-    }
-  }
-
-
-// what to do hen you are done with a calculation (no exit strategy)
+// what to do when you are done with a calculation (no exit strategy)
 // can we display the whole calculation on screen ? Instead of having the fist one and then only the second part ?
