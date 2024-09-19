@@ -149,19 +149,18 @@ buttons.forEach(function(item){
             operator = clickedElement
             displayContent = "";
             console.log('this is number1 :', number1)
-            console.log(operator)
           }
 
         if (number1 !== '' && !isNaN(parseFloat(clickedElement))) {
-          number2 += clickedElement;
-          console.log('this is number2 :', number2)
+            number2 += clickedElement;
+            console.log('this is number2 :', number2)
         }
 
         if(clickedElement === '=' && number1 !== '' && number2 !== ''){
             let result;
             result = operate(number1, operator, number2)
-            displayContent.textContent = result
-            console.log("this is displaycontent.textcontent: " + displayContent.textContent)
+            display.textContent = result
+            console.log("this is display.textContent: " + display.textContent)
             console.log("this is result: " + result)
             //displayContentValue =''
         }
@@ -178,8 +177,5 @@ buttons.forEach(function(item){
   }
 
 
-
-// idea for storing the values
-// first variable store the first number (when a click on operator is registered you stop)
-// second variable take the operator
-// third variable is being populated when the operator variable return 'true'
+// what to do hen you are done with a calculation (no exit strategy)
+// can we display the whole calculation on screen ? Instead of having the fist one and then only the second part ?
