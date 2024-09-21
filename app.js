@@ -153,7 +153,15 @@ function add (number1, number2){
     
   }
 
-  
+  function isNumber1 (number){
+    console.log("this is number1 :" + number1)
+    return number1+= number
+  }
+
+  function isNumber2 (number){
+    console.log("this is number2 :" + number1)
+    return number2+= number
+  }
 
 // Core function/iteration (?) that registers the hits on the calculator + process the logic above
 
@@ -164,6 +172,10 @@ buttons.forEach(function(item){
         
         let clickedElement = e.target.textContent
 
+      
+
+      isNumber1(clickedElement)
+      isNumber2(clickedElement)
 
       isOperator(clickedElement)
       erase(clickedElement)
