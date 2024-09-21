@@ -89,6 +89,8 @@ let number2 = '';
 let operator = '';
 let displayContent = "";
 
+let operatorList = ['+', '-', '*', '/']
+
 
 // functions to do base calculation
 
@@ -145,6 +147,14 @@ function add (number1, number2){
     displayContent ='';
   }
 
+  function isOperator (operator){
+    console.log("this is the operator :" + operator)
+    return operatorList.includes(operator)
+    
+  }
+
+  
+
 // Core function/iteration (?) that registers the hits on the calculator + process the logic above
 
 let buttons = document.querySelectorAll('.button')
@@ -153,14 +163,24 @@ buttons.forEach(function(item){
     item.addEventListener('click', e => {
         
         let clickedElement = e.target.textContent
-        displayContent += clickedElement;
+
+
+      isOperator(clickedElement)
+      erase(clickedElement)
+
+
+
+
+        /* displayContent += clickedElement;
         console.log("this is the calculator display :" + displayContent)
         erase(clickedElement);
-        display.textContent = displayContent;
+        display.textContent = displayContent; */
+
+
         
        
 
-        if (clickedElement === '+'|| clickedElement === '-' || clickedElement === '*' || clickedElement === '/')
+      /*  if (clickedElement === '+'|| clickedElement === '-' || clickedElement === '*' || clickedElement === '/')
           {
             number1 = parseFloat(displayContent)
             operator = clickedElement
@@ -180,10 +200,11 @@ buttons.forEach(function(item){
             //console.log("this is display.textContent: " + display.textContent)
             //console.log("this is result: " + result)
             reset();
-        }
+        } */
 
       })
 })
 
-// what to do when you are done with a calculation (no exit strategy)
-// can we display the whole calculation on screen ? Instead of having the fist one and then only the second part ?
+
+// key point = refzctoring the main function that does too much = adding several smaller functions
+// function needed : _ operator, number 1, number 2, result, erase
