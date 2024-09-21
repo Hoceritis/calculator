@@ -141,10 +141,11 @@ function add (number1, number2){
   function reset() {
     number1 ='';
     number2 ='';
-    operator =''
+    operator ='';
+    displayContent ='';
   }
 
-// Core function/iteration (?) that registers the hit on the calculator + process the logic above
+// Core function/iteration (?) that registers the hits on the calculator + process the logic above
 
 let buttons = document.querySelectorAll('.button')
 
@@ -176,8 +177,8 @@ buttons.forEach(function(item){
             let result;
             result = operate(number1, operator, number2)
             display.textContent = result
-            console.log("this is display.textContent: " + display.textContent)
-            console.log("this is result: " + result)
+            //console.log("this is display.textContent: " + display.textContent)
+            //console.log("this is result: " + result)
             reset();
         }
 
