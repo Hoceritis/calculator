@@ -87,7 +87,9 @@ displayCalculator.append(display)
 let number1 = '';
 let number2 = '';
 let operator = '';
-let displayContent = "";
+
+let displayContent = "test";
+display.textContent = displayContent;
 
 let operatorList = ['+', '-', '*', '/']
 
@@ -148,8 +150,11 @@ function add (number1, number2){
   }
 
   function isOperator (operator){
+
+    operatorList.includes(operator)
     console.log("this is the operator :" + operator)
-    return operatorList.includes(operator)
+
+    return 
     
   }
 
@@ -157,6 +162,11 @@ function add (number1, number2){
 
     number1+= number
     console.log("this is number1 :" + number1)
+
+    displayContent = number1
+    display.textContent = displayContent;
+    
+    console.log("this is displayContent :" + displayContent)
 
     return number1
   }
