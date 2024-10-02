@@ -134,8 +134,8 @@ function add (number1, number2){
 
   function erase (clickedElement){
     if(clickedElement ==='C'){
-      number1 =''
-      number2 =''
+      number1 = ''
+      number2 = ''
       displayContent = ''
     }
   }
@@ -154,13 +154,28 @@ function add (number1, number2){
   }
 
   function isNumber1 (number){
+
+    number1+= number
     console.log("this is number1 :" + number1)
-    return number1+= number
+
+    return number1
   }
 
   function isNumber2 (number){
-    console.log("this is number2 :" + number1)
-    return number2+= number
+
+    number2+= number
+    console.log("this is number2 :" + number2)
+
+    return number2
+  }
+
+  function isResult(equalKey){
+    let calculationResult =''
+    if (equalKey === '=') {
+      calculationResult = operate(isNumber1,isOperator, isNumber2)
+    }
+    console.log("this is the result :" + calculationResult)
+    return calculationResult
   }
 
 // Core function/iteration (?) that registers the hits on the calculator + process the logic above
@@ -171,14 +186,18 @@ buttons.forEach(function(item){
     item.addEventListener('click', e => {
         
         let clickedElement = e.target.textContent
+        console.log("clicked element " + clickedElement)
 
-      
 
       isNumber1(clickedElement)
-      isNumber2(clickedElement)
+
+      /* isNumber2(clickedElement)
 
       isOperator(clickedElement)
-      erase(clickedElement)
+
+      isResult(clickedElement)
+
+      erase(clickedElement) */
 
 
 
