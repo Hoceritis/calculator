@@ -88,11 +88,12 @@ let number1 = '';
 let number2 = '';
 let operator = '';
 
-let displayContent = "test";
+let displayContent = "";
 display.textContent = displayContent;
 
 let operatorList = ['+', '-', '*', '/']
 
+let isStateNumber1 = true;
 
 // functions to do base calculation
 
@@ -138,7 +139,7 @@ function add (number1, number2){
     if(clickedElement ==='C'){
       number1 = ''
       number2 = ''
-      displayContent = ''
+      display.textContent = ''
     }
   }
 
@@ -158,26 +159,7 @@ function add (number1, number2){
     
   }
 
-  function isNumber1 (number){
-
-    number1+= number
-    console.log("this is number1 :" + number1)
-
-    displayContent = number1
-    display.textContent = displayContent;
-    
-    console.log("this is displayContent :" + displayContent)
-
-    return number1
-  }
-
-  function isNumber2 (number){
-
-    number2+= number
-    console.log("this is number2 :" + number2)
-
-    return number2
-  }
+function numberCheck{}
 
   function isResult(equalKey){
     let calculationResult =''
@@ -187,6 +169,22 @@ function add (number1, number2){
     console.log("this is the result :" + calculationResult)
     return calculationResult
   }
+
+  function operatorCheck (operator){
+    if(isStateNumber1){
+      bufferValue += value
+      display.textContent = bufferValue
+      currentOperator = value
+      isStateNumber1 = false;
+    } else {
+
+    }
+    // check the state + store the result in bufferValue
+    // switch the state to false
+    // else = number
+  }
+
+
 
 // Core function/iteration (?) that registers the hits on the calculator + process the logic above
 
@@ -198,8 +196,11 @@ buttons.forEach(function(item){
         let clickedElement = e.target.textContent
         console.log("clicked element " + clickedElement)
 
+      
+      operatorCheck (clickedElement)
+      erase(clickedElement)
 
-      isNumber1(clickedElement)
+      
 
       /* isNumber2(clickedElement)
 
@@ -223,9 +224,9 @@ buttons.forEach(function(item){
 
       /*  if (clickedElement === '+'|| clickedElement === '-' || clickedElement === '*' || clickedElement === '/')
           {
-            number1 = parseFloat(displayContent)
-            operator = clickedElement
-            displayContent = "";
+            number1 = parseFloat(displayContent) //store
+            operator = clickedElement // new clicked element
+            displayContent = ""; // reset
             console.log('this is number1 :', number1)
           }
 
