@@ -86,7 +86,7 @@ displayCalculator.append(display)
 
 let number1 = '';
 let number2 = '';
-let operator = '';
+let currentOperator = '';
 
 let displayContent = "";
 display.textContent = displayContent;
@@ -94,6 +94,7 @@ display.textContent = displayContent;
 let operatorList = ['+', '-', '*', '/']
 
 let isStateNumber1 = true;
+let bufferValue = '';
 
 // functions to do base calculation
 
@@ -137,6 +138,7 @@ function add (number1, number2){
 
   function erase (clickedElement){
     if(clickedElement ==='C'){
+      bufferValue =''
       number1 = ''
       number2 = ''
       display.textContent = ''
@@ -159,12 +161,20 @@ function add (number1, number2){
     
   }
 
-function numberCheck{}
+function numberCheck(number){
+  if (!isNaN(parseFloat(number))){
+    bufferValue += number;
+    display.textContent = bufferValue
+    return bufferValue
+  } else {
+    console.log("You need a number")
+  }
+}
 
   function isResult(equalKey){
     let calculationResult =''
     if (equalKey === '=') {
-      calculationResult = operate(isNumber1,isOperator, isNumber2)
+      calculationResult = operate(number1, isOperator, number2)
     }
     console.log("this is the result :" + calculationResult)
     return calculationResult
@@ -172,10 +182,11 @@ function numberCheck{}
 
   function operatorCheck (operator){
     if(isStateNumber1){
-      bufferValue += value
-      display.textContent = bufferValue
-      currentOperator = value
-      isStateNumber1 = false;
+      //store the 1st number
+      //store the operator
+      //change state = number2
+      //???
+      //profit
     } else {
 
     }
@@ -196,57 +207,9 @@ buttons.forEach(function(item){
         let clickedElement = e.target.textContent
         console.log("clicked element " + clickedElement)
 
-      
+      numberCheck(clickedElement)
       operatorCheck (clickedElement)
       erase(clickedElement)
 
-      
-
-      /* isNumber2(clickedElement)
-
-      isOperator(clickedElement)
-
-      isResult(clickedElement)
-
-      erase(clickedElement) */
-
-
-
-
-        /* displayContent += clickedElement;
-        console.log("this is the calculator display :" + displayContent)
-        erase(clickedElement);
-        display.textContent = displayContent; */
-
-
-        
-       
-
-      /*  if (clickedElement === '+'|| clickedElement === '-' || clickedElement === '*' || clickedElement === '/')
-          {
-            number1 = parseFloat(displayContent) //store
-            operator = clickedElement // new clicked element
-            displayContent = ""; // reset
-            console.log('this is number1 :', number1)
-          }
-
-        if (number1 !== '' && !isNaN(parseFloat(clickedElement))) {
-            number2 += clickedElement;
-            console.log('this is number2 :', number2)
-        }
-
-        if(clickedElement === '=' && number1 !== '' && number2 !== ''){
-            let result;
-            result = operate(number1, operator, number2)
-            display.textContent = result
-            //console.log("this is display.textContent: " + display.textContent)
-            //console.log("this is result: " + result)
-            reset();
-        } */
-
       })
 })
-
-
-// key point = refzctoring the main function that does too much = adding several smaller functions
-// function needed : _ operator, number 1, number 2, result, erase
